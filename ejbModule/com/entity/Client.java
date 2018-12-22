@@ -13,8 +13,6 @@ public class Client implements Serializable{
 	private int id;
 	private String nom;
 	private String prenom;
-	@OneToMany
-	private List<Compte> compte ;
 	
 	public Client() {}
 

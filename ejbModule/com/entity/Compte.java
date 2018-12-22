@@ -15,7 +15,7 @@ public class Compte implements Serializable {
     private double solde;
     private Date dateCreation;
     private int type;
-    @OneToMany
+    @ManyToMany
     private List<Client> client;
 
     public Compte() {
