@@ -1,11 +1,9 @@
 package com.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Client implements Serializable{
@@ -15,6 +13,8 @@ public class Client implements Serializable{
 	private int id;
 	private String nom;
 	private String prenom;
+	@OneToMany(mappedBy = "client")
+	private List<Compte> compte ;
 	
 	public Client() {}
 

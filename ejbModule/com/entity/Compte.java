@@ -3,10 +3,7 @@ package com.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Compte implements Serializable {
@@ -17,7 +14,8 @@ public class Compte implements Serializable {
 	private double solde;
 	private Date dateCreation;
 	private int type;
-	
+	@ManyToOne
+	private Client client ;
 	public Compte(){}
 	
 	public int getCode() {
