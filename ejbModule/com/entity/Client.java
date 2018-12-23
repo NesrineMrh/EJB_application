@@ -40,5 +40,16 @@ public class Client implements Serializable{
 		this.prenom = prenom;
 	}
 	
+	public Client(String nom, String prenom) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+	}
+
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", nom=" + nom + ", prenom=" + prenom + "]";
+	}
+	
 	
 }

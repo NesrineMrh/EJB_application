@@ -11,7 +11,7 @@ import javax.persistence.Query;
 
 import com.entity.Client;
 
-@Stateless
+@Stateless(name="GestionClientLocal")
 public class GestionClients implements GestionClientsLocal , GestionClientsRemote{
 
 	ArrayList<Client> clients= new ArrayList<Client>();
@@ -20,14 +20,14 @@ public class GestionClients implements GestionClientsLocal , GestionClientsRemot
 	EntityManager em ;
 	
 	@Override
-	public Client ajouterPersonne(Client c) {
-		if(em.find(Client.class,c.getId()) != null) {
+	public Client ajouterClient(Client c) {
+		/*if(em.find(Client.class,c.getId()) != null) {
 			return c;
 		}
-		else {
+		else {*/
 			em.persist(c);
 			return c ;
-		}
+		//}
 	}
 
 	@Override
@@ -49,10 +49,10 @@ public class GestionClients implements GestionClientsLocal , GestionClientsRemot
 	}
 
 	@Override
-	public Client afficherClient(Client p) {
-		Client client= em.find(Client.class, p.getId());
+	public Client afficherClient(Client c) {
+		Client client= em.find(Client.class, c.getId());
 		if(client != null) {
-		return client ;
+		return client  ;
 		}else return null;
 	}
 

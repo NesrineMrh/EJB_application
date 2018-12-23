@@ -8,7 +8,7 @@ import com.entity.Client;
 
 @Remote
 public interface GestionClientsRemote {
-	public Client ajouterPersonne(Client p);
+	public Client ajouterClient(Client p);
 	public boolean supprimerClient(int id);
 	public boolean modifierClient(Client p);
 	public Client afficherClient(Client p);
