@@ -3,7 +3,7 @@
 	<persistence-unit name="FSTBank">
 	  <jta-data-source >java:/BankDS</jta-data-source>
 	  <properties>
-			<property name="javax.persistence.schema-generation.database.action" value="update"/>
+			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>		
 	  </properties>
 	</persistence-unit>
 </persistence>
