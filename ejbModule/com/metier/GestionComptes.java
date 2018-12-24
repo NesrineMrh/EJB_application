@@ -1,11 +1,12 @@
 package com.metier;
 
-import com.entity.Compte;
-
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import com.entity.Compte;
+
 import java.util.List;
 
 @Stateless(name = "GestionComptes")

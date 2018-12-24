@@ -18,7 +18,24 @@ public class Compte implements Serializable {
     @ManyToMany
     private List<Client> client;
 
-    public Compte() {
+    
+    public Compte(int code, double solde, Date dateCreation, int type) {
+		super();
+		this.code = code;
+		this.solde = solde;
+		this.dateCreation = dateCreation;
+		this.type = type;
+	}
+
+	public Compte(double solde, Date dateCreation, int type, List<Client> client) {
+		super();
+		this.solde = solde;
+		this.dateCreation = dateCreation;
+		this.type = type;
+		this.client = client;
+	}
+
+	public Compte() {
     }
 
     public int getCode() {
@@ -44,6 +61,22 @@ public class Compte implements Serializable {
     public void setType(int type) {
         this.type = type;
     }
+
+	public Date getDateCreation() {
+		return dateCreation;
+	}
+
+	public void setDateCreation(Date dateCreation) {
+		this.dateCreation = dateCreation;
+	}
+
+	public List<Client> getClient() {
+		return client;
+	}
+
+	public void setClient(List<Client> client) {
+		this.client = client;
+	}
 
 
 }

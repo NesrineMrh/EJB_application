@@ -1,8 +1,9 @@
 package com.metier;
 
+import javax.ejb.Remote;
+
 import com.entity.Compte;
 
-import javax.ejb.Remote;
 import java.util.List;
 
 @Remote

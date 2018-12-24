@@ -1,8 +1,9 @@
 package com.metier;
 
+import javax.ejb.Local;
+
 import com.entity.Compte;
 
-import javax.ejb.Local;
 import java.util.List;
 
 @Local
