@@ -15,12 +15,12 @@ public class Compte implements Serializable {
     private double solde;
     @Temporal(TemporalType.DATE)
     private Date dateCreation;
-    private int type;
+    private String type;
     @ManyToMany
     private List<Client> client;
 
     
-    public Compte(int code, double solde, Date dateCreation, int type) {
+    public Compte(int code, double solde, Date dateCreation, String type) {
 		super();
 		this.code = code;
 		this.solde = solde;
@@ -28,7 +28,7 @@ public class Compte implements Serializable {
 		this.type = type;
 	}
 
-	public Compte(double solde, Date dateCreation, int type, List<Client> client) {
+	public Compte(double solde, Date dateCreation, String type, List<Client> client) {
 		super();
 		this.solde = solde;
 		this.dateCreation = dateCreation;
@@ -55,11 +55,11 @@ public class Compte implements Serializable {
         this.solde = solde;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
     }
 
