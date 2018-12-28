@@ -13,6 +13,7 @@ public class Compte implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int code;
     private double solde;
+    @Temporal(TemporalType.DATE)
     private Date dateCreation;
     private int type;
     @ManyToMany
