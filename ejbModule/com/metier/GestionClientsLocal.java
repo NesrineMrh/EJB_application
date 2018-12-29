@@ -11,6 +11,6 @@ public interface GestionClientsLocal {
 	public Client ajouterClient(Client p);
 	public boolean supprimerClient(int id);
 	public boolean modifierClient(Client p);
-	public Client afficherClient(Client p);
+	public Client afficherClient(int id);
 	public List<Client> listClient();
 }

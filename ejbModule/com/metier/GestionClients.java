@@ -49,8 +49,8 @@ public class GestionClients implements GestionClientsLocal , GestionClientsRemot
 	}
 
 	@Override
-	public Client afficherClient(Client c) {
-		Client client= em.find(Client.class, c.getId());
+	public Client afficherClient(int id) {
+		Client client= em.find(Client.class, id);
 		if(client != null) {
 		return client  ;
 		}else return null;

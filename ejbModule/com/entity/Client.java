@@ -1,6 +1,7 @@
 package com.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ public class Client implements Serializable{
 	private int id;
 	private String nom;
 	private String prenom;
+	private List<Compte> comptes;
 	
 	public Client() {}
 
@@ -40,10 +42,18 @@ public class Client implements Serializable{
 		this.prenom = prenom;
 	}
 	
-	public Client(String nom, String prenom) {
+	public Client(int id,String nom, String prenom) {
 		super();
+		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
+	}
+	public Client(int id,String nom, String prenom, List<Compte> compte) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.comptes=compte;
 	}
 
 	@Override
