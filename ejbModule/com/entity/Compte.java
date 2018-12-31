@@ -16,7 +16,7 @@ public class Compte implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dateCreation;
     private String type;
-    @ManyToMany
+    @ManyToMany(mappedBy="comptes")
     private List<Client> client;
 
     
