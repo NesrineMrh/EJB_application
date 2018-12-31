@@ -1,6 +1,7 @@
 package com.entity;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -14,8 +15,17 @@ public class Client implements Serializable{
 	private int id;
 	private String nom;
 	private String prenom;
+	@ManyToMany
 	private List<Compte> comptes;
 	
+	public List<Compte> getComptes() {
+		return comptes;
+	}
+
+	public void setComptes(List<Compte> comptes) {
+		this.comptes = comptes;
+	}
+
 	public Client() {}
 
 	public int getId() {
@@ -42,24 +52,24 @@ public class Client implements Serializable{
 		this.prenom = prenom;
 	}
 	
-	public Client(int id,String nom, String prenom) {
-		super();
-		this.id = id;
+	public Client(String nom, String prenom) {
 		this.nom = nom;
 		this.prenom = prenom;
 	}
-	public Client(int id,String nom, String prenom, List<Compte> compte) {
+
+	public Client(String nom, String prenom, List<Compte> comptes) {
 		super();
-		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.comptes=compte;
+		this.comptes = comptes;
 	}
 
 	@Override
 	public String toString() {
 		return "Client [id=" + id + ", nom=" + nom + ", prenom=" + prenom + "]";
 	}
+
+	
 	
 	
 }
