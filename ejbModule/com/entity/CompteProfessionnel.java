@@ -5,15 +5,16 @@ import javax.persistence.Entity;
 @Entity
 public class CompteProfessionnel extends Compte{
 	
-	private String adress ;
+	private String type;
 
-	public String getAdress() {
-		return adress;
+	public String getType() {
+		return type;
 	}
 
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setType(String type) {
+		this.type = type;
 	}
-	
+
+
 	
 }

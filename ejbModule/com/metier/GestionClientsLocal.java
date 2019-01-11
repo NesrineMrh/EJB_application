@@ -5,10 +5,12 @@ import java.util.List;
 import javax.ejb.Local;
 
 import com.entity.Client;
+import com.entity.ClientProfessionnel;
 
 @Local
 public interface GestionClientsLocal {
 	public Client ajouterClient(Client p);
+	public ClientProfessionnel ajouterClientProfessionnel(ClientProfessionnel c);
 	public boolean supprimerClient(int id);
 	public boolean modifierClient(Client p);
 	public Client afficherClient(int id);

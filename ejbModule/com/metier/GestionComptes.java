@@ -88,4 +88,10 @@ public class GestionComptes implements GestionComptesLocal, GestionComptesRemote
     public void imprimer(Compte compte) {
 
     }
+
+	@Override
+	public boolean check(String login, String mdp) {
+		// TODO Auto-generated method stub
+		return true;
+	}
 }

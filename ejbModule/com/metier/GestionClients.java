@@ -10,6 +10,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.entity.Client;
+import com.entity.ClientProfessionnel;
+import com.entity.Compte;
 
 @Stateless(name="GestionClientLocal")
 public class GestionClients implements GestionClientsLocal , GestionClientsRemote{
@@ -29,6 +31,18 @@ public class GestionClients implements GestionClientsLocal , GestionClientsRemot
 			return c ;
 		//}
 	}
+	@Override
+	public ClientProfessionnel ajouterClientProfessionnel(ClientProfessionnel c) {
+		/*if(em.find(Client.class,c.getId()) != null) {
+			return c;
+		}
+		else {*/
+			em.persist(c);
+			return c ;
+		//}
+	}
+
+
 
 	@Override
 	public boolean supprimerClient(int id) {
@@ -62,4 +76,8 @@ public class GestionClients implements GestionClientsLocal , GestionClientsRemot
 		return req.getResultList();
 	}
 
+	public List<Client> listeCompte(){
+		Query req = em.createQuery("select c from Compte c join Client_Compte cc where c.code = cc.comptes_code");
+		return req.getResultList();
+	}
 }

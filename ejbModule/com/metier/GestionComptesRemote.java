@@ -23,4 +23,7 @@ public interface GestionComptesRemote {
     public Compte retirer(double montant, int code);
 
     public void imprimer(Compte compte);
+    
+    public boolean check(String login,String mdp);
+
 }
