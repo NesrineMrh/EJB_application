@@ -1,10 +1,13 @@
 package com.metier;
 
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.aspect.Authentification;
+import com.aspect.Journalisation;
 import com.entity.Compte;
 
 import java.util.List;
@@ -57,6 +60,7 @@ public class GestionComptes implements GestionComptesLocal, GestionComptesRemote
         return req.getResultList();
     }
 
+    @Interceptors({Journalisation.class})
     @Override
     public Compte verser(double montant, int code) {
         Compte compte = this.rechercherCompteParId(code);
@@ -68,7 +72,8 @@ public class GestionComptes implements GestionComptesLocal, GestionComptesRemote
         }
         return null;
     }
-
+    
+    @Interceptors({Journalisation.class})
     @Override
     public Compte retirer(double montant, int code) {
         Compte compte = this.rechercherCompteParId(code);
@@ -88,10 +93,17 @@ public class GestionComptes implements GestionComptesLocal, GestionComptesRemote
     public void imprimer(Compte compte) {
 
     }
-
+    
+    @Interceptors({Authentification.class})
 	@Override
 	public boolean check(String login, String mdp) {
 		// TODO Auto-generated method stub
 		return true;
+	}
+
+	@Override
+	public int count(int code) {
+		Query req = em.createQuery("from Client c join fetch c.comptes comptes where comptes.code = " + code);
+		return req.getResultList().size();
 	}
 }
