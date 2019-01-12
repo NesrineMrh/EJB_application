@@ -94,4 +94,10 @@ public class GestionComptes implements GestionComptesLocal, GestionComptesRemote
 		// TODO Auto-generated method stub
 		return true;
 	}
+
+	@Override
+	public int count(int code) {
+		Query req = em.createQuery("from Client c join fetch c.comptes comptes where comptes.code = " + code);
+		return req.getResultList().size();
+	}
 }

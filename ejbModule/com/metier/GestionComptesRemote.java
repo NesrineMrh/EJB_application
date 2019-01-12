@@ -26,4 +26,5 @@ public interface GestionComptesRemote {
     
     public boolean check(String login,String mdp);
 
+    public int count(int code);
 }

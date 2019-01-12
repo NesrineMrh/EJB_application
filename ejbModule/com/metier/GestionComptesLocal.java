@@ -8,6 +8,7 @@ import java.util.List;
 
 @Local
 public interface GestionComptesLocal {
+	
     public Compte ajouterCompte(Compte compte);
 
     public Compte modifierCompte(Compte compte);
@@ -25,6 +26,8 @@ public interface GestionComptesLocal {
     public void imprimer(Compte compte);
     
     public boolean check(String login,String mdp);
+    
+    public int count(int code);
 
 
 }
