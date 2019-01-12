@@ -76,8 +76,14 @@ public class GestionClients implements GestionClientsLocal , GestionClientsRemot
 		return req.getResultList();
 	}
 
-	public List<Client> listeCompte(){
-		Query req = em.createQuery("select c from Compte c join Client_Compte cc where c.code = cc.comptes_code");
+	@Override	
+	public List<Compte> listeCompte(int id){
+		Query req = em.createQuery("select c from Compte c join fetch c.client client where client.id = " + id);
+		return req.getResultList();
+	}
+	@Override
+	public List<Client> listClientByCompte(int code) {
+		Query req = em.createQuery("from Client c join fetch c.comptes comptes where comptes.code = " + code);
 		return req.getResultList();
 	}
 }
