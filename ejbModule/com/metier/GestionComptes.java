@@ -93,13 +93,6 @@ public class GestionComptes implements GestionComptesLocal, GestionComptesRemote
     public void imprimer(Compte compte) {
 
     }
-    
-    @Interceptors({Authentification.class})
-	@Override
-	public boolean check(String login, String mdp) {
-		// TODO Auto-generated method stub
-		return true;
-	}
 
 	@Override
 	public int count(int code) {

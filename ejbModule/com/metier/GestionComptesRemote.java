@@ -24,7 +24,5 @@ public interface GestionComptesRemote {
 
     public void imprimer(Compte compte);
     
-    public boolean check(String login,String mdp);
-
     public int count(int code);
 }

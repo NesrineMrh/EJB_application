@@ -18,5 +18,4 @@ public interface GestionClientsLocal {
 	public List<Client> listClient();
 	public List<Compte> listeCompte(int id );
 	public List<Client> listClientByCompte(int code);
-
 }

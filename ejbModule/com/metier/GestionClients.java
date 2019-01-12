@@ -5,10 +5,12 @@ import java.util.List;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.aspect.Authentification;
 import com.entity.Client;
 import com.entity.ClientProfessionnel;
 import com.entity.Compte;
@@ -86,4 +88,7 @@ public class GestionClients implements GestionClientsLocal , GestionClientsRemot
 		Query req = em.createQuery("from Client c join fetch c.comptes comptes where comptes.code = " + code);
 		return req.getResultList();
 	}
+	
+    
+  
 }

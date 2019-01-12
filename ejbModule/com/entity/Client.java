@@ -15,6 +15,9 @@ public class Client implements Serializable{
 	private int id;
 	private String nom;
 	private String prenom;
+	private String login;
+	private String password;
+
 	@ManyToMany
 	private List<Compte> comptes;
 	
@@ -55,6 +58,22 @@ public class Client implements Serializable{
 	public Client(String nom, String prenom) {
 		this.nom = nom;
 		this.prenom = prenom;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Client(String nom, String prenom, List<Compte> comptes) {

@@ -1,51 +1,56 @@
 package com.aspect;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Date;
-import javax.interceptor.AroundInvoke;
-import javax.interceptor.InvocationContext;
 
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.annotation.WebFilter;
 
+@WebFilter("/*")
+public class Authentification implements Filter {
 
-public class Authentification{
-
-	@AroundInvoke
-	public Object methodInterceptor(InvocationContext ctx) throws Exception {
-
-		try {
-
-			File file = new File("HistoriqueAuthentification.txt");
-
-			// créer le fichier s'il n'existe pas
-			if (!file.exists()) {
-				file.createNewFile();
-			}
-			System.out.println("Chemin absolu du fichier : " + file.getAbsolutePath());
-			FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
-			BufferedWriter bw = new BufferedWriter(fw);
-			PrintWriter out = new PrintWriter(bw);
-			// out.println(écrire id du client ->variable de session);
-			if (ctx.getMethod().getName().equals("check")) {
-				
-				out.println("***********************************");
-				out.println("Date d'authentification "+new Date());
-				out.println("login = " + ctx.getParameters()[0]);
-				
-			} 
-			bw.close();
-
-			System.out.println("Modification terminée!");
-
-		} catch (IOException e) {
-			e.printStackTrace();
+	@Override
+	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
+			throws ServletException, IOException {
+		
+	
+		HttpServletRequest request = (HttpServletRequest) req;
+		HttpServletResponse response = (HttpServletResponse) res;
+		HttpSession session = request.getSession();
+		// String loginURI = request.getContextPath() + "/Login";
+		StringBuffer requestURL = request.getRequestURL();
+		if (request.getQueryString() != null) {
+			requestURL.append("?").append(request.getQueryString());
 		}
+		String completeURL = requestURL.toString();
+		StringBuffer url = request.getRequestURL();
+		String uri = request.getRequestURI();
+		String ctx = request.getContextPath();
+		String base = url.substring(0, url.length() - uri.length() + ctx.length()) + "/";
+		String loginURI = base + "Login";
+		System.out.println("complete  URL  " + completeURL);
+		System.out.println("base  " + base);
+		System.out.println("loginURI  " + loginURI);
+		boolean loggedIn = session.getAttribute("user") != null;
+		boolean loginRequest = completeURL.equals(loginURI);
+		System.out.println("bool req  " + loginRequest);
+		System.out.println("bool login  " + loggedIn);
+		if (loggedIn || loginRequest) {
+			System.out.println("loooogggggeeeeeeeeeeedddd");
+			System.out.println(session.getAttribute("user"));
+			chain.doFilter(request, response);
+		} else {
+			System.out.println("redirect loog");
+			response.sendRedirect(loginURI);
+		}
+		//chain.doFilter(req, res);
 
-		Object result = ctx.proceed();
-
-		return result;
 	}
+
 }
