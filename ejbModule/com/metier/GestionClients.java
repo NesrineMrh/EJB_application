@@ -80,4 +80,9 @@ public class GestionClients implements GestionClientsLocal , GestionClientsRemot
 		Query req = em.createQuery("select c from Compte c join Client_Compte cc where c.code = cc.comptes_code");
 		return req.getResultList();
 	}
+	@Override
+	public List<Client> listClientByCompte(int code) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
