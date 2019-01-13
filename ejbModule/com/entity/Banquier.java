@@ -1,6 +1,8 @@
 package com.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.io.Serializable;
@@ -10,13 +12,33 @@ import java.util.List;
 public class Banquier implements Serializable {
 
     @Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
     private int id ;
     private String nom ;
     private String prenome;
     @OneToMany
     private List<Compte> comptes;
+    private String login;
+	private String password;
+	
 
-    public int getId() {
+    public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public int getId() {
         return id;
     }
 
@@ -47,4 +69,10 @@ public class Banquier implements Serializable {
     public void setComptes(List<Compte> comptes) {
         this.comptes = comptes;
     }
+
+	public Banquier() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+    
 }

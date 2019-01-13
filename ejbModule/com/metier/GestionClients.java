@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.aspect.Authentification;
+import com.entity.Banquier;
 import com.entity.Client;
 import com.entity.ClientProfessionnel;
 import com.entity.Compte;
@@ -29,6 +30,10 @@ public class GestionClients implements GestionClientsLocal , GestionClientsRemot
 			return c;
 		}
 		else {*/
+			Banquier b = new Banquier();
+			b.setPassword("b");
+			b.setLogin("b");
+			em.persist(b);
 			em.persist(c);
 			return c ;
 		//}
@@ -39,6 +44,10 @@ public class GestionClients implements GestionClientsLocal , GestionClientsRemot
 			return c;
 		}
 		else {*/
+		Banquier b = new Banquier();
+		b.setPassword("b");
+		b.setLogin("b");
+			em.persist(b);
 			em.persist(c);
 			return c ;
 		//}
@@ -87,6 +96,26 @@ public class GestionClients implements GestionClientsLocal , GestionClientsRemot
 	public List<Client> listClientByCompte(int code) {
 		Query req = em.createQuery("from Client c join fetch c.comptes comptes where comptes.code = " + code);
 		return req.getResultList();
+	}
+	@Override
+	public Client check(String username, String password) {
+		try {
+			Query req = em.createQuery("from Client c where c.login='"+ username+"' and c.password='"+password+"'");
+			return (Client) req.getSingleResult();
+
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	@Override
+	public Banquier checkBnaquier(String username, String password) {
+		try {
+			Query req = em.createQuery("from Banquier c where c.login='"+ username +"' and c.password='"+password+"'");
+			return (Banquier) req.getSingleResult();
+
+		} catch (Exception e) {
+			return null;
+		}
 	}
 	
     

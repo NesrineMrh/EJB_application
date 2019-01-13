@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
+import com.entity.Banquier;
 import com.entity.Client;
 import com.entity.ClientProfessionnel;
 import com.entity.Compte;
@@ -18,4 +19,7 @@ public interface GestionClientsRemote {
 	public List<Client> listClient();
 	public List<Compte> listeCompte(int id );
 	public List<Client> listClientByCompte(int code);
+	public Client check(String username , String password );
+	public Banquier checkBnaquier(String username , String password );
+
 }
