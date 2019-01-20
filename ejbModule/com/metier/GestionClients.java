@@ -29,11 +29,11 @@ public class GestionClients implements GestionClientsLocal , GestionClientsRemot
 		/*if(em.find(Client.class,c.getId()) != null) {
 			return c;
 		}
-		else {*/
+		else {
 			Banquier b = new Banquier();
 			b.setPassword("b");
 			b.setLogin("b");
-			em.persist(b);
+			em.persist(b);*/
 			em.persist(c);
 			return c ;
 		//}
@@ -43,11 +43,11 @@ public class GestionClients implements GestionClientsLocal , GestionClientsRemot
 		/*if(em.find(Client.class,c.getId()) != null) {
 			return c;
 		}
-		else {*/
+		else {
 		Banquier b = new Banquier();
 		b.setPassword("b");
 		b.setLogin("b");
-			em.persist(b);
+			em.persist(b);*/
 			em.persist(c);
 			return c ;
 		//}

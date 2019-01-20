@@ -1,5 +1,6 @@
 package com.entity;
 
+import javax.ejb.Singleton;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,6 +9,7 @@ import javax.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.List;
 
+@Singleton
 @Entity
 public class Banquier implements Serializable {
 
